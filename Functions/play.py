@@ -264,6 +264,7 @@ def play(player, gameManager):
     buttonSurface = pygame.image.load("img/ui/button.png")
     buttonSurface = pygame.transform.scale(buttonSurface, (buttonSurface.get_width()/1.3, buttonSurface.get_height()/1.3))
     MENU_BUTTON = Button(buttonSurface, 960, 1000, "Main Menu", False, None, None, buttonSurface)
+    RESPAWN_BUTTON = Button(buttonSurface, 960, 800, "Respawn", False, None, None, buttonSurface)
 
     #Initialize dash coordinates
     timerDash = [0 , 0]
@@ -410,7 +411,6 @@ def play(player, gameManager):
                 MENU_BUTTON.update(screen)
                 
                 
-                RESPAWN_BUTTON = Button(buttonSurface, 960, 800, "Respawn", False, None, None, buttonSurface)
                 RESPAWN_BUTTON.changeColor(pygame.mouse.get_pos(),screen)
                 RESPAWN_BUTTON.update(screen)
                 #MENU_BUTTON.changeColor(pygame.mouse.get_pos(), screen)

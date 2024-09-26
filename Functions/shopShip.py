@@ -29,7 +29,7 @@ else:
 LIVE_BUTTON = Button(live, 800, 550, "", True, get("upgrade.json", "playerLivePrice")[get("upgrade.json", "playerLiveLevel")], None, buttonSurface, "Increase the number of live")
 DASH_BUTTON = Button(dash, 1150, 550, "", True, get("upgrade.json", "playerDashPrice")[get("upgrade.json", "playerDashLevel")], None, buttonSurface, "Increase the dash cooldown timer")
 SHIELD_BUTTON = Button(shield, 800, 700, "", True, get("upgrade.json", "playerLivePrice")[get("upgrade.json", "playerLiveLevel")], None, buttonSurface, "Increase invulnerability time")
-SPEED_BUTTON = Button(speed, 1150, 700, "", True, get("upgrade.json", "playerSpeedPrice")[get("upgrade.json", "playerSpeedLevel")], None, buttonSurface, "Increase the speed of the ship")
+#SPEED_BUTTON = Button(speed, 1150, 700, "", True, get("upgrade.json", "playerSpeedPrice")[get("upgrade.json", "playerSpeedLevel")], None, buttonSurface, "Increase the speed of the ship")
 
 
 def get_font(size): # Returns Press-Start-2P in the desired size
@@ -63,7 +63,8 @@ def shopShip(SCREEN, BG, player, main_menu, gameManager, shop):
         SCREEN.blit(imgCoin,(0 ,50))
         SCREEN.blit(MENU_MONEY, (100,60))
         
-        for button in [RESUME_BUTTON, LIVE_BUTTON, DASH_BUTTON, SHIELD_BUTTON, SPEED_BUTTON]:
+        #for button in [RESUME_BUTTON, LIVE_BUTTON, DASH_BUTTON, SHIELD_BUTTON, SPEED_BUTTON]:
+        for button in [RESUME_BUTTON, LIVE_BUTTON, DASH_BUTTON, SHIELD_BUTTON]:
             button.changeColor(MENU_MOUSE_POS, SCREEN)
             button.update(SCREEN)
             
@@ -80,8 +81,8 @@ def shopShip(SCREEN, BG, player, main_menu, gameManager, shop):
                 if LIVE_BUTTON.checkForInput(MENU_MOUSE_POS, player):
                     player.lives = shopping("Live", LIVE_BUTTON, "lives")
                     
-                if SPEED_BUTTON.checkForInput(MENU_MOUSE_POS, player):
-                    player.basicSpeed = shopping("Speed", SPEED_BUTTON, "speed")
+                #if SPEED_BUTTON.checkForInput(MENU_MOUSE_POS, player):
+                #    player.basicSpeed = shopping("Speed", SPEED_BUTTON, "speed")
                     
                 if DASH_BUTTON.checkForInput(MENU_MOUSE_POS, player):
                     player.cooldownDash = shopping("Dash", DASH_BUTTON, "cooldownDash")
