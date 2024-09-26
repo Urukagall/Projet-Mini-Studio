@@ -20,7 +20,7 @@ MENU_TEXT = get_font(100).render("CREDIT", True, "#b68f40")
 MENU_TEXT_RECT = MENU_TEXT.get_rect(center=(960, 100))
 
 
-textCredit = "Programmers:\n\nAlix Loan\nBoisseau Romain\nCoulon Noham\nJorge-Afonso Dany\nMartinan Victor\n\n\nArtists:\n\nPascal Léo\nMalfre--Demuynck Hugo \n\n\nBusiness:\n\nAudette Luke\nPrivat Florian\nDeconinck Amaury\n\n\nMusic:\n\nRionnet Rémi\nAphinity"
+textCredit = "Programmers:\n\nAlix Loan\nBoisseau Romain\nCoulon Noham\nJorge-Afonso Dany\nMartinan Victor\n\n\nArtists:\n\nPascal Léo\nMalfre--Demuynck Hugo \n\n\nBusiness:\n\nAudette Luke\nPrivat Florian\nDeconinck Amaury\n\n\nMusic:\n\nRionnet Rémi\nCone24 | Aphinity"
 
 # La police et la taille du texte
 font = pygame.font.Font(None, 36)
