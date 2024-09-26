@@ -11,7 +11,7 @@
         250,
         -1
     ],
-    "bulletDamageLevel": 0,
+    "bulletDamageLevel": 1,
     "bulletDamageUpgrade": [
         2,
         3,

@@ -243,7 +243,9 @@ def play(player, gameManager):
     spyral = [False, 100, 0.5, 500, 0, 50, displayWidth, displayHeight, 100, imgSpyral, carreauGreen, 1, 4, 30, projectileList, 1.5, "left",30, 3]
     miniboss = miniBoss(500, 1, 0, 0, 100, 1920, 1080, 1000, imgMiniBoss, projectileList, "right")
     enemyDelayList = [[10, 300, 2], [1870,300,0],[10,300,120],[1870,300,0],[10,300,120],[1870,300,0], [displayWidth/4, 1, 320],[3*displayWidth/4, 1, 0], [displayWidth/2, 1, 320],[displayWidth/4, 1, 320],[3*displayWidth/4, 1, 0],[3*displayWidth/4, 1, 120],[displayWidth/4, 1, 0],[displayWidth/2, 1, 320],[3*displayWidth/4, 1, 120],[displayWidth/4, 1, 0], [3*displayWidth/4, 1, 120],[displayWidth/4, 1, 0], [3*displayWidth/4, 1, 120],[displayWidth/4, 1, 0], [3*displayWidth/4, 1, 120],[displayWidth/4, 1, 0], [3*displayWidth/4, 1, 120],[displayWidth/4, 1, 0], [10, 300, 2], [1870,300,0], [10, 300, 2],[displayWidth/4, 1, 0], [3*displayWidth/4, 1, 120], [0,0,120],[0,0,60], [0,0,0]]
-    enemyList  = [createEnemy(miniBozo), createEnemy(miniBozo), createEnemy(miniBozo),createEnemy(miniBozo), createEnemy(miniBozo), createEnemy(miniBozo), createEnemy(bozo), createEnemy(bozo), createEnemy(railgun), createEnemy(bozo), createEnemy(supressor), createEnemy(bozo), createEnemy(railgun), createEnemy(bozo), createEnemy(bozo),createEnemy(spyral),createEnemy(spyral), createEnemy(railgun), createEnemy(supressor), createEnemy(spyral), createEnemy(bozo), createEnemy(bozo), createEnemy(supressor), createEnemy(railgun), createEnemy(miniBozo), createEnemy(miniBozo), createEnemy(miniBozo), createEnemy(bozo), createEnemy(bozo), createEnemy(bozo), miniboss]
+    
+    enemyList = []
+    #enemyList  = [createEnemy(miniBozo), createEnemy(miniBozo), createEnemy(miniBozo),createEnemy(miniBozo), createEnemy(miniBozo), createEnemy(miniBozo), createEnemy(bozo), createEnemy(bozo), createEnemy(railgun), createEnemy(bozo), createEnemy(supressor), createEnemy(bozo), createEnemy(railgun), createEnemy(bozo), createEnemy(bozo),createEnemy(spyral),createEnemy(spyral), createEnemy(railgun), createEnemy(supressor), createEnemy(spyral), createEnemy(bozo), createEnemy(bozo), createEnemy(supressor), createEnemy(railgun), createEnemy(miniBozo), createEnemy(miniBozo), createEnemy(miniBozo), createEnemy(bozo), createEnemy(bozo), createEnemy(bozo), miniboss]
 
     onScreenEnemiesList = []
     #create boss
@@ -262,7 +264,6 @@ def play(player, gameManager):
     buttonSurface = pygame.image.load("img/ui/button.png")
     buttonSurface = pygame.transform.scale(buttonSurface, (buttonSurface.get_width()/1.3, buttonSurface.get_height()/1.3))
     MENU_BUTTON = Button(buttonSurface, 960, 1000, "Main Menu", False, None, None, buttonSurface)
-
 
     #Initialize dash coordinates
     timerDash = [0 , 0]
@@ -407,6 +408,13 @@ def play(player, gameManager):
             while True:
                 MENU_BUTTON.changeColor(pygame.mouse.get_pos(), screen)
                 MENU_BUTTON.update(screen)
+                
+                
+                RESPAWN_BUTTON = Button(buttonSurface, 960, 800, "Respawn", False, None, None, buttonSurface)
+                RESPAWN_BUTTON.changeColor(pygame.mouse.get_pos(),screen)
+                RESPAWN_BUTTON.update(screen)
+                #MENU_BUTTON.changeColor(pygame.mouse.get_pos(), screen)
+                #MENU_BUTTON.update(screen)
                 event = pygame.event.poll()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
@@ -415,6 +423,12 @@ def play(player, gameManager):
                         isPaused = False
                         post("save.json" ,"money",player.money)
                         return player.money
+                    if RESPAWN_BUTTON.checkForInput(pygame.mouse.get_pos(), player):
+                        running = True
+                        isPaused = False
+                        isDead = False
+                        player.lives = 5
+                        break
                 
                 pygame.display.flip()
                 clock.tick(60)
